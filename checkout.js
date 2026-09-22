@@ -1,15 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const username = localStorage.getItem('username') || 'אורח';
   const cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
   let total = localStorage.getItem('cartTotal');
+
   if (!total && cart.length > 0) {
     total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
   }
   total = total || 0;
 
-  document.getElementById('customerName').textContent = username;
   document.getElementById('totalAmount').textContent = total;
+
+  const expiryInput = document.getElementById('expiry');
+  expiryInput.addEventListener('input', (e) => {
+    let val = e.target.value.replace(/\D/g, '');
+    if (val.length >= 2) {
+      val = val.substring(0, 2) + '/' + val.substring(2, 4);
+    }
+    e.target.value = val;
+  });
 
   const form = document.getElementById('paymentForm');
   const successModal = new bootstrap.Modal(document.getElementById('successModal'));
@@ -23,13 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    if (parseFloat(total) <= 0) {
-      alert('עגלת הקניות שלך ריקה!');
-      return;
-    }
+    const fullName = document.getElementById('fullName').value;
 
     document.getElementById('modalMessage').textContent = 
-      `תודה ${username}, התשלום על סך ${total} ₪ עבר בהצלחה. ההזמנה שלך בדרך!`;
+      `תודה ${fullName}, התשלום על סך ${total} ₪ נקלט בהצלחה במערכת!`;
 
     localStorage.removeItem('cart');
     localStorage.removeItem('cartTotal');
