@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>חנות האיפור</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- החלק העליון (header) הוא של מור – זה רק מקום שמור -->
+  <header id="top-bar"></header>
+
+  <!-- מסך הפתיחה: תופס את כל המסך בכניסה -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>היופי שלך,<br>בגוון שלך</h1>
+      <p>איפור עדין ונעים לכל יום.</p>
+      <a href="#categories" class="hero-btn">לקטגוריות</a>
+    </div>
+  </section>
+
+  <main>
+    <!-- הקטגוריות נוצרות אוטומטית מהמוצרים ב-data.js -->
+    <section id="categories">
+      <h2 class="section-title">קטגוריות</h2>
+      <div id="category-list" class="categories"></div>
+    </section>
+
+    <section id="shop">
+      <h2 class="section-title" id="shop-title">כל המוצרים</h2>
+      <div id="products" class="grid"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="catalog.js"></script>
+</body>
+</html>
