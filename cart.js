@@ -70,6 +70,13 @@ const findIdInCart = (productId) => {
   return cart.find(item => item.productId === productId);
 }
 
+const calculateTotalPrice = () => {
+  return cart.reduce((total, cartItem) => {
+    const product = findIdInProducts(cartItem.productId);
+    return total + (product.price * cartItem.quantity); 
+  },0);
+}
+
 const renderCart = () => {
   cartContainer.innerHTML = "";
 
@@ -78,6 +85,8 @@ const renderCart = () => {
 
     cartContainer.innerHTML += createProductCard(product);
   });
+
+  document.getElementById('total-price').textContent = calculateTotalPrice() + " ₪";
 };
 
 renderCart();
