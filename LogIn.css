@@ -1,0 +1,64 @@
+div[id="container"]
+{
+border: 2px solid rgba(180, 150, 150, 0.25);
+border-radius: 15px;
+width: 380px;
+box-sizing: border-box;
+padding: 35px;
+background-color:white;
+}
+button
+{
+    width: 100%;
+    height: 38px;
+    background-color: #C97A7D;
+    border:none;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+input
+{
+    width: 100%;
+    height: 38px;
+    border: 1px solid rgb(205, 200, 200);
+border-radius: 5px;
+text-align: right;
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+padding: 10px;
+}
+input:focus
+ {
+    border: 2px solid #C97A7D;
+    outline: none;
+}
+h3
+{
+    color: #9A555B;
+    text-align: center;
+    font-family: 'Frank Ruhl Libre', serif;
+}
+h1
+{
+ color: #9A555B;
+font-family: 'Playfair Display', serif;
+}
+body
+{
+    background-color:#FDF8F7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ padding-top: 70px;
+ zoom: 1.15;
+ 
+   
+}
+img
+{
+    width: 280px;
+    position: absolute;
+    top: 60px;
+    left: 54%;
+}
