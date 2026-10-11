@@ -3,18 +3,90 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>עמוד תשלום</title>
+  <title>פרטי תשלום</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #FDF8F7;
+      color: #3F3031;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    .card {
+      background-color: #FFFFFF;
+      border: 1px solid #E8DDDB;
+      border-radius: 16px;
+    }
+    .page-title {
+      color: #9A555B;
+      font-weight: 700;
+    }
+    .amount-box {
+      background-color: #F4E3E2;
+      color: #9A555B;
+      border: 1px solid #E8DDDB;
+      border-radius: 12px;
+      padding: 14px;
+      font-weight: 600;
+    }
+    .form-label {
+      color: #3F3031;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+    .form-control {
+      background-color: #FFFFFF;
+      border: 1px solid #E8DDDB;
+      color: #3F3031;
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .form-control:focus {
+      border-color: #C97A7D;
+      box-shadow: 0 0 0 0.25rem rgba(201, 122, 125, 0.25);
+    }
+    .btn-pay {
+      background-color: #C97A7D;
+      border-color: #C97A7D;
+      color: #FFFFFF;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.2s ease-in-out;
+    }
+    .btn-pay:hover, .btn-pay:focus {
+      background-color: #9A555B;
+      border-color: #9A555B;
+      color: #FFFFFF;
+    }
+    .modal-content {
+      border-radius: 16px;
+      border: 1px solid #E8DDDB;
+    }
+    .modal-title-custom {
+      color: #9A555B;
+      font-weight: 700;
+    }
+    .btn-modal-home {
+      background-color: #C97A7D;
+      border-color: #C97A7D;
+      color: #FFFFFF;
+      border-radius: 8px;
+    }
+    .btn-modal-home:hover {
+      background-color: #9A555B;
+      border-color: #9A555B;
+      color: #FFFFFF;
+    }
+  </style>
 </head>
-<body class="bg-light">
+<body>
 
-  <div class="container py-5" style="max-width: 550px;">
-    <div class="card shadow-sm border-0">
-      <div class="card-body p-4">
+  <div class="container py-5" style="max-width: 520px;">
+    <div class="card shadow-sm">
+      <div class="card-body p-4 p-md-5">
         
-        <h2 class="card-title text-center mb-4">פרטי תשלום</h2>
+        <h2 class="card-title text-center mb-4 page-title">פרטי תשלום</h2>
         
-        <div class="alert alert-primary text-center mb-4">
+        <div class="amount-box text-center mb-4 fs-5">
           סכום לתשלום: <strong id="totalAmount">0</strong> ₪
         </div>
 
@@ -36,17 +108,17 @@
             <div class="col-6 mb-3">
               <label class="form-label">תוקף (MM/YY)</label>
               <input type="text" class="form-control" id="expiry" placeholder="12/28" maxlength="5" pattern="(0[1-9]|1[0-2])\/[0-9]{2}" required>
-              <div class="invalid-feedback">פורמט חודש/שנה תקין (MM/YY).</div>
+              <div class="invalid-feedback">פורמט MM/YY.</div>
             </div>
 
             <div class="col-6 mb-3">
               <label class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cvv" placeholder="3 ספרות בגב הכרטיס" maxlength="3" pattern="[0-9]{3}" required>
+              <input type="text" class="form-control" id="cvv" placeholder="3 ספרות" maxlength="3" pattern="[0-9]{3}" required>
               <div class="invalid-feedback">3 ספרות.</div>
             </div>
           </div>
 
-          <button type="submit" class="btn btn-primary w-100 py-2 fs-5 mt-3">ביצוע תשלום</button>
+          <button type="submit" class="btn btn-pay w-100 py-2 fs-5 mt-3">ביצוע תשלום</button>
         </form>
 
       </div>
@@ -56,10 +128,10 @@
   <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content text-center p-4">
-        <h3 class="text-success mb-3">הרכישה בוצעה בהצלחה!</h3>
-        <p id="modalMessage" class="fs-5 text-muted"></p>
+        <h3 class="modal-title-custom mb-3">הרכישה בוצעה בהצלחה!</h3>
+        <p id="modalMessage" class="fs-5 mb-4" style="color: #3F3031;"></p>
         <div>
-          <button type="button" class="btn btn-success px-4" id="homeBtn">חזרה לחנות</button>
+          <button type="button" class="btn btn-modal-home px-4 py-2" id="homeBtn">חזרה לחנות</button>
         </div>
       </div>
     </div>
