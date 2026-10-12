@@ -5,7 +5,7 @@ function login()
 
     if (username.value=="מיכל"&&password.value=="1234")
          {
-        window.location.href = "index.html";
+        window.location.href = "catalog.html";
     }
     else
     {
