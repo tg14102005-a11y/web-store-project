@@ -80,13 +80,13 @@ const products = [
     image: "images/brow-gel.jpg",
     stock: 13
   },
-  {
+   {
     id: 10,
-    name: "פודרה מקבעת",
-    description: "פודרה קלילה לקיבוע האיפור וגימור חלק",
-    category: "פנים",
-    price: 95,
-    image: "images/setting-powder.jpg",
-    stock: 8
+    name: "עיפרון שפתיים",
+    description: "עיפרון עדין לעיצוב קו השפתיים בגוון נודי טבעי",
+    category: "שפתיים",
+    price: 55,
+    image: "images/lip-liner.jpg",
+    stock: 12
   }
 ];

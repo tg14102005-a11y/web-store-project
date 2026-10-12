@@ -2,14 +2,23 @@ const productsContainer = document.getElementById("products");
 const categoryContainer = document.getElementById("category-list");
 const shopTitle = document.getElementById("shop-title");
 
+// תמונת הדוגמנית: אם אין שדה hoverImage במוצר, מחפשים קובץ באותו שם עם "-model".
+// למשל images/lipstick.jpg  ->  images/lipstick-model.jpg
+// אם הקובץ לא קיים, פשוט נשארת התמונה הרגילה.
+function hoverImage(product) {
+  return product.hoverImage || product.image.replace(/(\.\w+)$/, "-model$1");
+}
+
 // ---------- כרטיסי מוצרים ----------
 // map עוברת על כל מוצר ומחזירה לכל אחד את ה-HTML של הכרטיס
 function renderProducts(list) {
   productsContainer.innerHTML = list.map(product => `
-    <article class="card">
+    <article class="card" data-id="${product.id}">
       <div class="card-image">
-        <img src="${product.image}" alt="${product.name}"
+        <img class="img-main" src="${product.image}" alt="${product.name}"
              onerror="this.parentElement.classList.add('no-image'); this.remove();">
+        <img class="img-hover" src="${hoverImage(product)}" alt="${product.name} על דוגמנית"
+             onerror="this.remove();">
       </div>
       <div class="card-body">
         <span class="category">${product.category}</span>
@@ -23,6 +32,8 @@ function renderProducts(list) {
       </div>
     </article>
   `).join("");
+  // פסיפס רק כשמוצגים כל המוצרים; בסינון לפי קטגוריה נשארת הפריסה הרגילה
+  productsContainer.classList.toggle("mosaic", list.length === products.length);
 }
 
 // ---------- קטגוריות ----------
