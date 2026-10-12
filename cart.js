@@ -1,7 +1,5 @@
 ﻿const cartContainer = document.getElementById('cart-items');
   
-
-
 const increaseQuantity = (productID) => {
   let stock = findIdInProducts(productID).stock;
   if (stock > 0) {
