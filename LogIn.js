@@ -2,9 +2,10 @@ function login()
 {
     let username=document.getElementById("username");
      let password=document.getElementById("password");
+
     if (username.value=="מיכל"&&password.value=="1234")
          {
-        
+        window.location.href = "catalog.html";
     }
     else
     {
