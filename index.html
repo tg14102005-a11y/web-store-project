@@ -7,7 +7,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- החלק העליון (header) הוא של מור – זה רק מקום שמור -->
+ <!DOCTYPE html>
+<html lang="he">
+    <head>
+        <meta charset="UTF-8">
+        <title>Online shop</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        
+        <header class="top-header">
+            <div class="header-actions">
+            <h2 id="username"> שלום, מיכל </h2>
+            <a href="cart.html" class="cart-link">
+                <img src="cart-icon.png.JPG" alt="cart" class="cart-icon">
+            
+                <span id="cart-count">0</span>
+
+            </a>
+            </div>
+        </header>
+        <button onclick="addToCart(1)">הוספה לסל - בדיקה </button>
+        <script src="data.js"></script>
+        <script src="products.js"></script>
+       
+    </body>
+   </html>
+   
   <header id="top-bar"></header>
 
   <!-- מסך הפתיחה: תופס את כל המסך בכניסה -->
