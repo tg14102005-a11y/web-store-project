@@ -7,37 +7,17 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- <!DOCTYPE html>
-<html lang="he">
-    <head>
-        <meta charset="UTF-8">
-        <title>Online shop</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+  <header id="top-bar" class="top-header">
+    <div class="header-actions">
+      <h2 id="username">שלום, מיכל</h2>
+      <a href="cart.html" class="cart-link">
+        <img src="cart-icon.png.jpt" alt="cart" class="cart-icon">
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
 
-    <body>
-        
-        <header class="top-header">
-            <div class="header-actions">
-            <h2 id="username"> שלום, מיכל </h2>
-            <a href="cart.html" class="cart-link">
-                <img src="cart-icon.png.JPG" alt="cart" class="cart-icon">
-            
-                <span id="cart-count">0</span>
-
-            </a>
-            </div>
-        </header>
-        <button onclick="addToCart(1)">הוספה לסל - בדיקה </button>
-        <script src="data.js"></script>
-        <script src="products.js"></script>
-       
-    </body>
-   </html>
-   
-  <header id="top-bar"></header>
-
-  <!-- מסך הפתיחה: תופס את כל המסך בכניסה -->
+  <!-- מסך הפתיחה -->
   <section class="hero">
     <div class="hero-text">
       <h1 lang="en" dir="ltr">Glow your<br>own way</h1>
@@ -47,7 +27,6 @@
   </section>
 
   <main>
-    <!-- הקטגוריות נוצרות אוטומטית מהמוצרים ב-data.js -->
     <section id="categories">
       <h2 class="section-title">קטגוריות</h2>
       <div id="category-list" class="categories"></div>
@@ -59,7 +38,8 @@
     </section>
   </main>
 
-  <script src="data.js"></script>
-  <script src="catalog.js"></script>
+ <script src="data.js"></script>
+<script src="products.js"></script>
+<script src="catalog.js"></script>
 </body>
 </html>
