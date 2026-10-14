@@ -261,4 +261,15 @@ body {
     align-items: center;
     gap: 25px;
 }
-
+h1
+{
+ color: #9A555B;
+font-family: 'Playfair Display', serif;
+}
+#brush-img
+{
+    width: 410px;
+    position: absolute;
+    top: 260px;
+    left: 57%;
+}
