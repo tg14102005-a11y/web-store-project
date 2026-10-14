@@ -210,6 +210,9 @@ body {
     color: #3F3031;
 }
 .top-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
     background-color: #FFFFFF;
     border-bottom: 1px solid #E8DDDB;
     display: flex;
