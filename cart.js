@@ -78,11 +78,13 @@ const calculateTotalPrice = () => {
 const renderCart = () => {
   cartContainer.innerHTML = "";
 
-  cart.forEach((cartItem) => {
-    const product = findIdInProducts(cartItem.productId);
+  cart
+    .filter((cartItem) => cartItem.quantity > 0)
+    .forEach((cartItem) => {
+      const product = findIdInProducts(cartItem.productId);
 
-    cartContainer.innerHTML += createProductCard(product);
-  });
+      cartContainer.innerHTML += createProductCard(product);
+    });
 
   document.getElementById('total-price').textContent = calculateTotalPrice() + " ₪";
 };
