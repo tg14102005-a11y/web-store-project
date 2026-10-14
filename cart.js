@@ -89,8 +89,11 @@ const renderCart = () => {
 
 const goToCheckout = () => {
   if (cart.length != 0) {
+    localStorage.setItem('cartTotal', calculateTotalPrice());
     window.location.href = "checkout.html";
   }
 };
+
+document.querySelector('.pay-button button')?.addEventListener('click', goToCheckout);
 
 renderCart();
