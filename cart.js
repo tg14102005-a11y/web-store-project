@@ -87,4 +87,10 @@ const renderCart = () => {
   document.getElementById('total-price').textContent = calculateTotalPrice() + " ₪";
 };
 
+const goToCheckout = () => {
+  if (cart.length != 0) {
+    window.location.href = "checkout.html";
+  }
+};
+
 renderCart();
