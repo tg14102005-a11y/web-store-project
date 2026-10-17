@@ -1,41 +1,73 @@
-﻿const cartContainer = document.getElementById('cart-items');
-  
+﻿let cart = JSON.parse(localStorage.getItem('cart')) || [];
+const cartContainer = document.getElementById('cart-items');
+
+const findIdInProducts = (productId) => {
+  return products.find(product => product.id === productId);
+};
+
+const findIdInCart = (productId) => {
+  return cart.find(item => item.productId === productId);
+};
+
+const calculateTotalPrice = () => {
+  return cart.reduce((total, cartItem) => {
+    const product = findIdInProducts(cartItem.productId);
+    return product ? total + (product.price * cartItem.quantity) : total;
+  }, 0);
+};
+
+const saveCart = () => {
+  localStorage.setItem('cart', JSON.stringify(cart));
+};
+
 const increaseQuantity = (productID) => {
-  let stock = findIdInProducts(productID).stock;
-  if (stock > 0) {
-    findIdInCart(productID).quantity++;
-    findIdInProducts(productID).stock--;
-    renderCart();
-  } else {
-    alert("המוצר אזל מהמלאי");
+  const product = findIdInProducts(productID);
+  const cartItem = findIdInCart(productID);
+
+  if (product && cartItem) {
+    if (product.stock > 0) {
+      cartItem.quantity++;
+      product.stock--;
+      saveCart();
+      renderCart();
+    } else {
+      alert("המוצר אזל מהמלאי");
+    }
   }
-}
+};
 
 const decreaseQuantity = (productID) => {
   const cartItem = findIdInCart(productID);
+  const product = findIdInProducts(productID);
+
+  if (!cartItem) return;
 
   if (cartItem.quantity === 1) {
     removeFromCart(productID);
   } else {
     cartItem.quantity--;
-    findIdInProducts(productID).stock++;
+    if (product) product.stock++;
+    saveCart();
     renderCart();
   }
-}
+};
 
 const removeFromCart = (productId) => {
   const cartItem = findIdInCart(productId);
   const product = findIdInProducts(productId);
 
-  product.stock += cartItem.quantity;
+  if (cartItem && product) {
+    product.stock += cartItem.quantity;
+  }
 
-  const index = cart.findIndex(item => item.productId === productId);
-  cart.splice(index, 1);
-
+  cart = cart.filter(item => item.productId !== productId);
+  saveCart();
   renderCart();
-}
+};
 
-const createProductCard = (product) => {
+const createProductCard = (product, quantity) => {
+  const itemTotal = product.price * quantity;
+
   return `
     <tr class="cart-row">
       <td>
@@ -50,47 +82,35 @@ const createProductCard = (product) => {
       <td>
         <div class="qty-cell">
           <button type="button" class="qty-button" data-action="decrease" data-id="${product.id}" onclick="decreaseQuantity(${product.id})">−</button>
-          <span class="qty-value">${findIdInCart(product.id).quantity}</span>
+          <span class="qty-value">${quantity}</span>
           <button type="button" class="qty-button" data-action="increase" data-id="${product.id}" onclick="increaseQuantity(${product.id})">+</button>
         </div>
       </td>
-      <td class="total-cell">${product.price * findIdInCart(product.id).quantity} ₪</td>
+      <td class="total-cell">${itemTotal} ₪</td>
       <td><button type="button" class="remove-item" data-id="${product.id}" onclick="removeFromCart(${product.id})">×</button></td>
     </tr>
   `;
 };
 
-const findIdInProducts = (productId) => {
-  return products.find(product => product.id === productId);
-}
-
-const findIdInCart = (productId) => {
-  return cart.find(item => item.productId === productId);
-}
-
-const calculateTotalPrice = () => {
-  return cart.reduce((total, cartItem) => {
-    const product = findIdInProducts(cartItem.productId);
-    return total + (product.price * cartItem.quantity); 
-  },0);
-}
-
 const renderCart = () => {
+  if (!cartContainer) return;
   cartContainer.innerHTML = "";
 
-  cart
-    .filter((cartItem) => cartItem.quantity > 0)
-    .forEach((cartItem) => {
-      const product = findIdInProducts(cartItem.productId);
+  cart.forEach((cartItem) => {
+    const product = findIdInProducts(cartItem.productId);
+    if (product) {
+      cartContainer.innerHTML += createProductCard(product, cartItem.quantity);
+    }
+  });
 
-      cartContainer.innerHTML += createProductCard(product);
-    });
-
-  document.getElementById('total-price').textContent = calculateTotalPrice() + " ₪";
+  const totalPriceEl = document.getElementById('total-price');
+  if (totalPriceEl) {
+    totalPriceEl.textContent = calculateTotalPrice() + " ₪";
+  }
 };
 
 const goToCheckout = () => {
-  if (cart.length != 0) {
+  if (cart.length !== 0) {
     localStorage.setItem('cartTotal', calculateTotalPrice());
     window.location.href = "checkout.html";
   }
