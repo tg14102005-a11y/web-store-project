@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>חנות האיפור</title>
+  <link rel="stylesheet" href="homePage.css">
+</head>
+
+
+    <body>
+      <img id="brush-img" src="images/brush.png" alt="מברשת">
+        <header class="top-header">
+            <div class="header-actions">
+            <h2 id="username"> שלום, מיכל </h2>
+            <a href="cart.html" class="cart-link">
+                <img src="cart-icon.png.JPG" alt="cart" class="cart-icon">
+            
+                <span id="cart-count">0</span>
+
+            </a>
+            </div>
+        </header>
+        <script src="data.js"></script>
+        <script src="products.js"></script>
+
+  <!-- מסך הפתיחה: תופס את כל המסך בכניסה -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1 lang="en" dir="ltr">Glow your own way</h1>
+      <p>איפור עדין ונעים לכל יום.</p>
+      <!-- <a href="#categories" class="hero-btn">לקטגוריות</a> -->
+    </div>
+  </section>
+
+  <main>
+
+
+    <section id="shop">
+      <h2 class="section-title" id="shop-title">כל המוצרים</h2>
+      <div id="products" class="grid"></div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="catalog.js"></script>
+</body>
+</html>
