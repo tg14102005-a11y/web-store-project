@@ -104,33 +104,8 @@ html { scroll-behavior: smooth; }
 .hero-btn:hover { background: #b57a72; }
 .hero-btn:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
 
-/* קטגוריות */
 .section-title { font-size: 1.6rem; font-weight: 600; text-align: center; margin: 56px 0 24px; }
 
-.categories {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 16px;
-}
-.category-tile {
-  font: inherit;
-  color: var(--text);
-  background: var(--card);
-  border: 2px solid transparent;
-  border-radius: 18px;
-  padding: 32px 16px;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  align-items: center;
-  box-shadow: 0 6px 20px rgba(200, 140, 132, 0.14);
-  transition: border-color 0.2s;
-}
-.category-tile:hover, .category-tile.active { border-color: var(--pink); }
-.category-tile:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
-.tile-name { font-size: 1.2rem; font-weight: 600; }
-.tile-count { color: var(--muted); font-size: 0.85rem; }
 
 #shop { scroll-margin-top: 16px; }
 
