@@ -1,5 +1,4 @@
 const productsContainer = document.getElementById("products");
-const shopTitle = document.getElementById("shop-title");
 
 function hoverImage(product) {
   return product.hoverImage || product.image.replace(/(\.\w+)$/, "-model$1");
@@ -26,8 +25,7 @@ function renderProducts(list) {
       </div>
     </article>
   `).join("");
-  
-  productsContainer.classList.toggle("mosaic", list.length === products.length);
+
 }
 
 productsContainer.addEventListener("click", event => {
@@ -38,15 +36,6 @@ productsContainer.addEventListener("click", event => {
 });
 
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-const cartCount = document.getElementById("cart-count");
-
-function updateCartBadge() {
-  if (cartCount) {
-    const totalCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
-    cartCount.textContent = totalCount;
-  }
-}
-updateCartBadge();
 
 function addToCart(productId) {
   const product = products.find(p => p.id === productId);
