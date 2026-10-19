@@ -107,6 +107,8 @@ const renderCart = () => {
   if (totalPriceEl) {
     totalPriceEl.textContent = calculateTotalPrice() + " ₪";
   }
+
+  updateCartBadge();
 };
 
 const goToCheckout = () => {

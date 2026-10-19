@@ -2,11 +2,23 @@
 <html lang="he" dir="rtl">
   <head>
     <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="homePage.css">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>העגלה שלי</title>
   </head>
   <body>
+
+    <header class="top-header">
+    <div class="header-actions">
+      <h2 id="username">שלום, מיכל</h2>
+      <a href="cart.html" class="cart-link">
+        <img src="cart-icon.png.JPG" alt="cart" class="cart-icon">
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
     <div class="page-shell">
       <h2>העגלה שלי</h2>
 
@@ -33,6 +45,8 @@
     </div>
 
     <script src="data.js"></script>
+    <script src="cartBadge.js"></script>
     <script src="cart.js"></script>
+
   </body>
 </html>
